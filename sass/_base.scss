@@ -1,0 +1,55 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #B28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483A;
+$color-grey-dark-2: #6D5D4B;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;       // 10px/16px(default size) = 62.5% -> 1rem = 10px
+}
+
+body {
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    // we're setting up each row. example, 80vh is the top, header, min content is next, only fitting the content
+    // 40vw is the realtors space only using 40% of the viewport width. & then the last 3 rows we want 3 of them
+    // repeated with only the minimum content
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    // adding a fix width to the columns because we want our features to stay the same size when reducing the 
+    // screen. 1200 - 1400 px is a good starting point for width, so divide that by 8 columns to get 140px = 14rem
+    //minmax function works like this -> min-content stands for the minimum the content gets
+    // which is set to min-content = only as small as the content is & 14rem is the highest a screen
+    // could get. Which means that it will never be bigger than 14rem -- hence minmax function
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start]repeat(8,
+     [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+    & > * {
+        font-size: 3rem;
+        padding: 40px;
+    }
+}

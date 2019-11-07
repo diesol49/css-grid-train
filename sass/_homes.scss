@@ -1,0 +1,6 @@
+.homes {
+    background-color: $color-secondary;
+    // it's always good practice to name your columns and grids. Look at your 
+    // line numbers and name the sections of pieces instead of just using the numbers
+    grid-column: center-start / center-end;
+}
